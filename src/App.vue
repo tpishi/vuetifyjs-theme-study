@@ -48,6 +48,11 @@
           Dark
         </v-btn>
       </v-btn-toggle>
+      <v-select
+        :items="colorThemes"
+        label="ColorTheme"
+        v-model="selectedColorTheme"
+      ></v-select>
       <v-btn icon @click.stop="rightDrawer = !rightDrawer">
         <v-icon>menu</v-icon>
       </v-btn>
@@ -88,6 +93,11 @@ export default {
   data () {
     return {
       theme: 'light',
+      selectedColorTheme: 'Standard',
+      colorThemes: [
+        'Standard',
+        'Pattern A'
+      ],
       clipped: false,
       drawer: true,
       fixed: false,
@@ -99,6 +109,31 @@ export default {
       right: true,
       rightDrawer: false,
       title: 'Vuetify.js'
+    }
+  },
+  watch: {
+    selectedColorTheme (val) {
+      if (val === 'Standard') {
+        this.$vuetify.theme = {
+          primary: '#ee44aa',
+          secondary: '#424242',
+          accent: '#82B1FF',
+          error: '#FF5252',
+          info: '#2196F3',
+          success: '#4CAF50',
+          warning: '#FFC107'
+        }
+      } else if (val === 'Pattern A') {
+        this.$vuetify.theme = {
+          primary: '#0000ff',
+          secondary: '#00ff00',
+          accent: '#82B1FF',
+          error: '#FF0000',
+          info: '#000000',
+          success: '#0000ff',
+          warning: '#ffff00'
+        }
+      }
     }
   }
 }
