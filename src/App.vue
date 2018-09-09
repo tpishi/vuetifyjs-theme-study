@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app v-bind:dark="theme === 'dark'">
     <v-navigation-drawer
       persistent
       :mini-variant="miniVariant"
@@ -40,6 +40,14 @@
       </v-btn>
       <v-toolbar-title v-text="title"></v-toolbar-title>
       <v-spacer></v-spacer>
+      <v-btn-toggle v-model="theme">
+        <v-btn flat value="light">
+          Light
+        </v-btn>
+        <v-btn flag value="dark">
+          Dark
+        </v-btn>
+      </v-btn-toggle>
       <v-btn icon @click.stop="rightDrawer = !rightDrawer">
         <v-icon>menu</v-icon>
       </v-btn>
@@ -79,6 +87,7 @@ export default {
   },
   data () {
     return {
+      theme: 'light',
       clipped: false,
       drawer: true,
       fixed: false,
