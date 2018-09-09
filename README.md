@@ -1,5 +1,9 @@
 # vuetifyjs-theme-study
 
+## What is this?
+
+This is a test implementation to check vuetify.js can change theme and color dynamically.
+
 ## Project setup
 ```
 npm install
